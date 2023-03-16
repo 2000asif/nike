@@ -1,9 +1,12 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:nike_project/widgets/favourite_screen.dart';
 import 'package:nike_project/widgets/home_screen.dart';
+import 'package:nike_project/widgets/notification_screen.dart';
 import 'package:nike_project/widgets/profile_screen.dart';
+import 'package:nike_project/widgets/shopping_screeen.dart';
 
 class BottomNavController extends StatefulWidget {
   const BottomNavController({Key? key}) : super(key: key);
@@ -15,11 +18,15 @@ class BottomNavController extends StatefulWidget {
 class _BottomNavControllerState extends State<BottomNavController> {
   final items = const [
     Icon(
-      Icons.home_outlined,
+      IconlyBold.home,
       size: 30,
     ),
     Icon(
       Icons.favorite_border_rounded,
+      size: 30,
+    ),
+    Icon(
+      Icons.shopping_basket,
       size: 30,
     ),
     Icon(
@@ -38,11 +45,6 @@ class _BottomNavControllerState extends State<BottomNavController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue,
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text('Curved Navigation Bar'),
-        backgroundColor: Colors.white,
-      ),
       bottomNavigationBar: CurvedNavigationBar(
         items: items,
         index: index,
@@ -53,7 +55,7 @@ class _BottomNavControllerState extends State<BottomNavController> {
         },
         height: 70,
         backgroundColor: Colors.transparent,
-        animationDuration: const Duration(milliseconds: 300),
+
         // animationCurve: ,
       ),
       body: Container(
@@ -73,6 +75,12 @@ class _BottomNavControllerState extends State<BottomNavController> {
         break;
       case 1:
         widget = const Favourite();
+        break;
+      case 2:
+        widget = const Shopping();
+        break;
+      case 3:
+        widget = const NotificationScreen();
         break;
 
       default:
